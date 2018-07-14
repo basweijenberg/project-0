@@ -2,7 +2,7 @@
 
 public class MouseLockController : MonoBehaviour {
 
-	void Start() {
+	/*void Start() {
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
@@ -14,5 +14,5 @@ public class MouseLockController : MonoBehaviour {
 		if (Input.GetButtonDown("Fire1")){
 			Cursor.lockState = CursorLockMode.Locked;
 		}
-	}
+	}*/
 }
