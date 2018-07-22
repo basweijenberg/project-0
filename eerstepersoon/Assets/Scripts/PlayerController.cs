@@ -7,15 +7,18 @@ public class PlayerController : MonoBehaviour {
 	public static float translation = 0;
 	public static float hor = 0;
 	public static float ver = 0;
+	public static bool canMove = true;
 
-	void Update() {
-		translation = Input.GetAxisRaw("Vertical") * speed;
-		float straffe = Input.GetAxisRaw("Horizontal") * speed;
-		hor = Mathf.Abs(Input.GetAxisRaw("Horizontal"));
-		ver = Mathf.Abs(Input.GetAxisRaw("Vertical"));
-		translation *= Time.deltaTime;
-		straffe *= Time.deltaTime;
+	void FixedUpdate() {
+		if (canMove){
+			translation = Input.GetAxisRaw("Vertical") * speed;
+			float straffe = Input.GetAxisRaw("Horizontal") * speed;
+			hor = Mathf.Abs(Input.GetAxisRaw("Horizontal"));
+			ver = Mathf.Abs(Input.GetAxisRaw("Vertical"));
+			translation *= Time.deltaTime;
+			straffe *= Time.deltaTime;
 
-		transform.Translate(straffe, 0, translation);	
+			transform.Translate(straffe, 0, translation);	
+		}
 	}
 }

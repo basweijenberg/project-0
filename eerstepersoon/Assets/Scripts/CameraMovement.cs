@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!PauseMenuController.GameIsPaused){
+		if (!PauseMenuController.GameIsPaused && PlayerController.canMove){
 			var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
 			md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
