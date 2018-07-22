@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour {
 	Vector2 smoothV;
 	public float sensitivity = 3.0f;
 	public float smoothing = 2.0f;
+	float elapsedTime = 0;
 
 	GameObject player;
 
@@ -25,6 +26,13 @@ public class CameraMovement : MonoBehaviour {
 			transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
 			player.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, player.transform.up);
 			mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 90f);
+
+			float totalMovement = Mathf.Clamp(PlayerController.hor + PlayerController.ver, 0, 1);
+			if (totalMovement > 0)
+				elapsedTime += Time.deltaTime;
+			
+			float yOffset = Mathf.Sin(elapsedTime*15)*0.05f;
+			transform.position =  transform.parent.position +(Vector3.up/2)+ Vector3.up* (yOffset*totalMovement);
 		}
 	}
 }
